@@ -1,0 +1,21 @@
+/// Defaults
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.menu-icon {
+  @include hamburger-generator(24px, 3px, 5px, #000, $timing-function: linear);
+}
+
+html.mm-opening .menu-icon {
+  @include hamburger-animation();
+}
+
+.navigation-toggle {
+  font-size: 0;
+  display: block;
+  cursor: pointer;
+}

@@ -1,0 +1,207 @@
+@import 'variables';
+
+///  Mixins
+
+@mixin scrollbars(
+  $size,
+  $foreground-color,
+  $background-color: mix($foreground-color, white, 50%)
+) {
+  ::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+    &:hover {
+      background-color: lighten($color: $foreground-color, $amount: 5);
+    }
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  html,
+  body {
+    /// For Internet Explorer
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+    /// For Mozilla Firefox
+    scrollbar-width: thin;
+    scrollbar-color: $background-color $foreground-color;
+  }
+}
+
+@mixin backgroundImage($src, $size) {
+  background: $src no-repeat;
+  background-size: $size;
+}
+
+@mixin push--auto {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+@mixin responsive-ratio($x, $y, $pseudo: false) {
+  $padding: unquote(($y / $x) * 100 + '%');
+  @if $pseudo {
+    &:before {
+      @include pseudo($pos: relative);
+      width: 100%;
+      padding-top: $padding;
+    }
+  } @else {
+    padding-top: $padding;
+  }
+}
+
+@mixin truncate($truncation-boundary) {
+  max-width: $truncation-boundary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@function unfoldTransition($transition) {
+  $property: all;
+  $duration: 0.2s;
+  $easing: null;
+  $delay: null;
+  $defaultProperties: ($property, $duration, $easing, $delay);
+
+  $unfoldedTransition: ();
+  @for $i from 1 through length($defaultProperties) {
+    $p: null;
+    @if $i <= length($transition) {
+      $p: nth($transition, $i);
+    } @else {
+      $p: nth($defaultProperties, $i);
+    }
+    $unfoldedTransition: append($unfoldedTransition, $p);
+  }
+
+  @return $unfoldedTransition;
+}
+
+@function getTransitionProperty($transition) {
+  $property: all;
+  $defaultProperties: ($property);
+
+  $propertyText: ();
+  @for $i from 1 through length($defaultProperties) {
+    $p: null;
+    @if $i <= length($transition) {
+      $p: nth($transition, $i);
+    } @else {
+      $p: nth($defaultProperties, $i);
+    }
+    $propertyText: append($propertyText, $p);
+  }
+
+  @if ($propertyText == all) {
+    @return null;
+  }
+
+  @if ($propertyText == visibility) {
+    @return null;
+  }
+
+  @return $propertyText;
+}
+
+@mixin transition($transitions...) {
+  $unfoldedTransitions: ();
+  $willChangeProperties: ();
+  @each $transition in $transitions {
+    $unfoldedTransitions: append(
+      $unfoldedTransitions,
+      unfoldTransition($transition),
+      comma
+    );
+    $prop: getTransitionProperty($transition);
+    @if ($prop != null) {
+      $willChangeProperties: append($willChangeProperties, $prop, comma);
+    }
+  }
+
+  -webkit-transition: $unfoldedTransitions;
+  -moz-transition: $unfoldedTransitions;
+  -ms-transition: $unfoldedTransitions;
+  -o-transition: $unfoldedTransitions;
+  transition: $unfoldedTransitions;
+  will-change: $willChangeProperties;
+}
+
+// =============================================================================
+// String Replace
+// =============================================================================
+
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace +
+      str-replace(
+        str-slice($string, $index + str-length($search)),
+        $search,
+        $replace
+      );
+  }
+
+  @return $string;
+}
+
+// =============================================================================
+// Font Face
+// =============================================================================
+
+@mixin font-face(
+  $name,
+  $path,
+  $weight: null,
+  $style: null,
+  $exts: eot woff2 woff ttf svg
+) {
+  $src: null;
+
+  $extmods: (
+    eot: '?',
+    svg: '#' + str-replace($name, ' ', '_')
+  );
+
+  $formats: (
+    otf: 'opentype',
+    ttf: 'truetype'
+  );
+
+  @each $ext in $exts {
+    $extmod: if(
+      map-has-key($extmods, $ext),
+      $ext + map-get($extmods, $ext),
+      $ext
+    );
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+    $src: append(
+      $src,
+      url(quote($path + '.' + $extmod)) format(quote($format)),
+      comma
+    );
+  }
+
+  @font-face {
+    font-family: quote($name);
+    font-style: $style;
+    font-weight: $weight;
+    src: $src;
+  }
+}

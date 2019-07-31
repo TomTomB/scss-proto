@@ -1,0 +1,9 @@
+@import 'variables';
+@import 'functions';
+
+///  Extends
+
+%my-extend {
+  color: black;
+  border: 1px solid green;
+}

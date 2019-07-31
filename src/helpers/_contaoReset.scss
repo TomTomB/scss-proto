@@ -1,0 +1,47 @@
+/// Contao Helpers / Reset
+@if $isContao == true {
+  .block:not(.mm-menu) {
+    overflow: visible;
+  }
+
+  #main,
+  #left,
+  #right {
+    float: none;
+    margin: 0;
+    padding: 0;
+    position: initial;
+    .inside {
+      position: initial;
+    }
+  }
+
+  #left {
+    order: 1;
+  }
+
+  #main {
+    order: 2;
+  }
+
+  #right {
+    order: 3;
+  }
+
+  #container {
+    display: flex;
+    &:after,
+    &.custom:after {
+      content: none;
+    }
+  }
+
+  figure,
+  img {
+    line-height: 0;
+  }
+
+  #mobilemenu:not(.mm-menu) {
+    display: none;
+  }
+}
