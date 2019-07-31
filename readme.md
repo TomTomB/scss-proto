@@ -1,4 +1,5 @@
-##raumzeitmedia SCSS Proto
+# raumzeitmedia SCSS Proto
 
-#Install
+## Install
+
 Clone this repo, run npm install && npm start
