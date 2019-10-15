@@ -12,10 +12,12 @@ A SCSS boilerplate for any kind of web-based project.
 
 ## Install
 
+0. Install NodeJS if not already done. You can get it [here](https://nodejs.org/en/ '(target|_blank)')
+
 1. Get the stylelint extention for your editor of choice. You can find a list of them [here ](https://github.com/stylelint/stylelint/blob/master/docs/user-guide/complementary-tools.md#editor-plugins '(target|_blank)')
 
-2. Clone this repo
+1. Clone this repo
 
-3. Inside a terminal run `npm install && npm start`
+1. Inside a terminal run `npm install && npm start`
 
 The fully optimized CSS file will be placed inside the dist folder.
