@@ -8,8 +8,8 @@
     "start": "gulp sass:watch"
   },
   "dependencies": {
-    "mathsass": "^0.10.1",
-    "modularscale-sass": "^3.0.8",
+    "mathsass": "^0.11.0",
+    "modularscale-sass": "^3.0.10",
     "normalize-scss": "^7.0.1",
     "sass-mq": "^5.0.1"
   },
@@ -18,8 +18,8 @@
     "gulp": "^4.0.2",
     "gulp-postcss": "^8.0.0",
     "gulp-sourcemaps": "^2.6.5",
-    "postcss": "^7.0.17",
-    "gulp-autoprefixer": "^6.1.0",
+    "postcss": "^7.0.18",
+    "gulp-autoprefixer": "^7.0.1",
     "gulp-sass": "^4.0.2",
     "node-sass": "^4.12.0"
   }
