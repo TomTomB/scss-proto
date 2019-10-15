@@ -12,15 +12,15 @@
     height: $size;
   }
 
+  ::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
   ::-webkit-scrollbar-thumb {
     background: $foreground-color;
     &:hover {
       background-color: lighten($color: $foreground-color, $amount: 5);
     }
-  }
-
-  ::-webkit-scrollbar-track {
-    background: $background-color;
   }
 
   html,

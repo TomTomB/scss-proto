@@ -1,11 +1,12 @@
 {
   "name": "rzm-scss-proto",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "The raumzeitmedia GmbH SCSS prototype",
   "author": "Tom-Rune Bornholdt",
   "license": "MIT",
   "scripts": {
-    "start": "gulp sass:watch"
+    "start": "gulp sass:watch",
+    "lint": "stylelint \"src/**/*.scss\""
   },
   "dependencies": {
     "mathsass": "^0.11.0",
@@ -16,11 +17,14 @@
   "devDependencies": {
     "cssnano": "^4.1.10",
     "gulp": "^4.0.2",
-    "gulp-postcss": "^8.0.0",
-    "gulp-sourcemaps": "^2.6.5",
-    "postcss": "^7.0.18",
     "gulp-autoprefixer": "^7.0.1",
+    "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.2",
-    "node-sass": "^4.12.0"
+    "gulp-sourcemaps": "^2.6.5",
+    "node-sass": "^4.12.0",
+    "postcss": "^7.0.18",
+    "stylelint": "^11.1.1",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-scss": "^3.11.1"
   }
 }
