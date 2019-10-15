@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "start": "gulp sass:watch",
-    "lint": "stylelint \"src/**/*.scss\""
+    "lint": "stylelint \"src/**/*.scss\"",
+    "lint:fix": "stylelint \"src/**/*.scss\" --fix"
   },
   "dependencies": {
     "mathsass": "^0.11.0",
