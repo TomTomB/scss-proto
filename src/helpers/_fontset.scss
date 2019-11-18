@@ -1,4 +1,4 @@
-@import './functions';
+@import "./functions";
 
 /// Ein font-face mit Roboto Regular erstellen:
 /// Für Konfiguration siehe _functions.scss -> @mixin font-face
@@ -6,5 +6,5 @@
 
 html,
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }

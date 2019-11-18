@@ -1,4 +1,4 @@
-@import 'variables';
+@import "variables";
 
 ///  Mixins
 
@@ -46,14 +46,14 @@
   }
 }
 
-@mixin pseudo($display: block, $pos: absolute, $content: '') {
+@mixin pseudo($display: block, $pos: absolute, $content: "") {
   content: $content;
   display: $display;
   position: $pos;
 }
 
 @mixin responsive-ratio($x, $y, $pseudo: false) {
-  $padding: unquote(($y / $x) * 100 + '%');
+  $padding: unquote(($y / $x) * 100 + "%");
   @if $pseudo {
     &:before {
       @include pseudo($pos: relative);
@@ -146,7 +146,7 @@
 // String Replace
 // =============================================================================
 
-@function str-replace($string, $search, $replace: '') {
+@function str-replace($string, $search, $replace: "") {
   $index: str-index($string, $search);
 
   @if $index {
@@ -175,13 +175,13 @@
   $src: null;
 
   $extmods: (
-    eot: '?',
-    svg: '#' + str-replace($name, ' ', '_')
+    eot: "?",
+    svg: "#" + str-replace($name, " ", "_")
   );
 
   $formats: (
-    otf: 'opentype',
-    ttf: 'truetype'
+    otf: "opentype",
+    ttf: "truetype"
   );
 
   @each $ext in $exts {
@@ -193,7 +193,7 @@
     $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
     $src: append(
       $src,
-      url(quote($path + '.' + $extmod)) format(quote($format)),
+      url(quote($path + "." + $extmod)) format(quote($format)),
       comma
     );
   }

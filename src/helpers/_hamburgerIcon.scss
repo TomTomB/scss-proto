@@ -48,7 +48,7 @@ $hamburger-settings-gutter: 0 !default;
   &:before,
   &:after {
     position: absolute;
-    content: '';
+    content: "";
   }
   &:before {
     top: -($height + $gutter);
