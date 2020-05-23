@@ -1,6 +1,6 @@
 {
   "name": "rzm-scss-proto",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "The raumzeitmedia GmbH SCSS prototype",
   "author": "Tom-Rune Bornholdt",
   "license": "MIT",
@@ -20,12 +20,12 @@
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-postcss": "^8.0.0",
-    "gulp-sass": "^4.0.2",
+    "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^2.6.5",
-    "node-sass": "^4.13.0",
-    "postcss": "^7.0.21",
-    "stylelint": "^12.0.0",
+    "node-sass": "^4.14.1",
+    "postcss": "^7.0.30",
+    "stylelint": "^13.5.0",
     "stylelint-config-recommended": "^3.0.0",
-    "stylelint-scss": "^3.12.1"
+    "stylelint-scss": "^3.17.2"
   }
 }
