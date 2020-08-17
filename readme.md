@@ -1,4 +1,4 @@
-# raumzeitmedia SCSS Proto
+# SCSS Proto
 
 A SCSS boilerplate for any kind of web-based project.
 
@@ -16,8 +16,8 @@ A SCSS boilerplate for any kind of web-based project.
 
 1. Get the stylelint extention for your editor of choice. You can find a list of them [here](https://github.com/stylelint/stylelint/blob/master/docs/user-guide/integrations/editor.md)
 
-1. Clone this repo
+2. Clone this repo && `cd` into it
 
-1. Inside a terminal run `npm install && npm start`
+3. Inside a terminal run `npm install && npm start`
 
 The fully optimized CSS file will be placed inside the dist folder.
