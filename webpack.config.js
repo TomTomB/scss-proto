@@ -1,17 +1,17 @@
-const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = (env, argv) => {
   const config = {
-    entry: "./src/index.js",
+    entry: './src/index.js',
     output: {
-      path: path.resolve(__dirname, "dist"),
-      filename: "bundle.js",
+      path: path.resolve(__dirname, 'dist'),
+      filename: 'bundle.js',
     },
     optimization: {
       minimizer: [
-        new OptimizeCSSAssetsPlugin({ cssProcessor: require("cssnano") }),
+        new OptimizeCSSAssetsPlugin({ cssProcessor: require('cssnano') }),
       ],
     },
     module: {
@@ -23,19 +23,27 @@ module.exports = (env, argv) => {
               loader: MiniCssExtractPlugin.loader,
             },
             {
-              loader: "css-loader",
+              loader: 'css-loader',
               options: {
                 sourceMap: true,
               },
             },
             {
-              loader: "sass-loader",
+              loader: 'sass-loader',
               options: {
                 sourceMap: true,
               },
             },
             {
-              loader: "postcss-loader",
+              loader: 'postcss-loader',
+            },
+          ],
+        },
+        {
+          test: /\.(png|jpe?g|gif)$/i,
+          use: [
+            {
+              loader: 'file-loader',
             },
           ],
         },
@@ -43,13 +51,13 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new MiniCssExtractPlugin({
-        filename: "[name].css",
-        chunkFilename: "[id].css",
+        filename: '[name].css',
+        chunkFilename: '[id].css',
       }),
     ],
-    devtool: "source-map",
+    devtool: 'source-map',
     resolve: {
-      extensions: [".js", ".scss"],
+      extensions: ['.js', '.scss'],
     },
   };
 
